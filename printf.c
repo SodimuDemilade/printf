@@ -4,6 +4,46 @@
 #include "main.h"
 
 /**
+ * select_format - select the format specifier.
+ *
+ * @list: the list.
+ *
+ * @format: the character string.
+ *
+ */
+void select_format(va_list list, const char **format)
+{
+	char *s;
+	char c;
+	int count = 0;
+
+	switch (**format)
+	{
+		case 'c': {
+				c = (char)va_arg(list, int);
+				putchar(c);
+				count++;
+				break;
+			}
+		case 's': {
+				s = va_arg(list, char *);
+				while (*s != '\0')
+				{
+					putchar(*s);
+					s++;
+					count++;
+				}
+				break;
+				}
+		case '%': {
+				putchar('%');
+				count++;
+				break;
+				}
+	}
+}
+
+/**
  * _printf - function to print output according to a format.
  *
  * @format: character string.
@@ -14,41 +54,16 @@
 
 int _printf(const char *format, ...)
 {
-	char c;
-	char *s;
 	va_list list;
 	int count = 0;
-	
+
 	va_start(list, format);
-	while(*format != '\0')
+	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
-			switch (*format)
-			{
-				case 'c': {
-						  c = (char)va_arg(list, int);
-						  putchar(c);
-						  count++;
-						  break;
-					  }
-				case 's': {
-						  s = va_arg(list, char *);
-						  while (*s != '\0')
-						  {
-							  putchar(*s);
-							  s++;
-							  count++;
-						  }
-						  break;
-					  }
-				case '%': {
-						  putchar('%');
-						  count++;
-						  break;
-					  }
-			}
+			select_format(list, &format);
 		}
 		else
 		{
@@ -58,5 +73,5 @@ int _printf(const char *format, ...)
 		format++;
 		}
 		va_end(list);
-		return count;
+		return (count);
 	}
