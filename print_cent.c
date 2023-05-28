@@ -1,15 +1,17 @@
 #include "main.h"
-#include <unistd.h>
 
 /**
- * print_char - print character % to stdout
- * 
+ * print_cent - prints character % to stdout
  * @args: variadic parameter
  *
- * return: number of character printed
+ * Return: number of characters printed
  */
+
 int print_cent(va_list args)
 {
-	//expressions;
-	return (0);
-}
+	(void)args;
+
+	write(1, "%", 1);
+
+	return (1);
+}	

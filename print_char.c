@@ -1,21 +1,22 @@
 #include "main.h"
-#include <unistd.h>
 
 /**
- * print_char - print a character
- * 
+ * print_char - prints a character to stdout
  * @args: variadic parameter
  *
- * return: number of character printed
+ * Return: number of characters printed
  */
+
 int print_char(va_list args)
 {
-	char c = (char)var_arg(args , int);
+	char c = (char)va_arg(args, int);
 	int count = 0;
-	if(c)
+
+	if (c)
 	{
-		write(1, &c , 1);
+		count = write(1, &c, 1);
 		return (count);
 	}
+
 	return (0);
-}
+}	
