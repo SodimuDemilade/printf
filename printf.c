@@ -4,7 +4,7 @@
 #include "main.h"
 
 /**
- * printf - function to print output according to a format.
+ * _printf - function to print output according to a format.
  *
  * @format: character string.
  *
@@ -14,16 +14,49 @@
 
 int _printf(const char *format, ...)
 {
-	int i = 0;
+	char c;
+	char *s;
 	va_list list;
-
-	if (format == NULL)
-		return (-1);
+	int count = 0;
+	
 	va_start(list, format);
-	while (format[i])
+	while(*format != '\0')
 	{
-		i++;
+		if (*format == '%')
+		{
+			format++;
+			switch (*format)
+			{
+				case 'c': {
+						  c = (char)va_arg(list, int);
+						  putchar(c);
+						  count++;
+						  break;
+					  }
+				case 's': {
+						  s = va_arg(list, char *);
+						  while (*s != '\0')
+						  {
+							  putchar(*s);
+							  s++;
+							  count++;
+						  }
+						  break;
+					  }
+				case '%': {
+						  putchar('%');
+						  count++;
+						  break;
+					  }
+			}
+		}
+		else
+		{
+			putchar (*format);
+			count++;
+		}
+		format++;
+		}
+		va_end(list);
+		return count;
 	}
-	write(1, format, i);
-	return (i);
-}
