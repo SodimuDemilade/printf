@@ -13,14 +13,12 @@
 
 int _printf(const char *format, ...)
 {
-
 	int i = 0;
 	int count = 0;
 	int value = 0;
 	va_list args;
-	int(*f)(va_list);
 	va_start(args, format);
-	
+	int (*f)(va_list);
 	
 	/*Prevent parsing a null pointer*/
 	if (format == NULL)
