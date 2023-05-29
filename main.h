@@ -1,3 +1,4 @@
+
 #ifndef MAIN_H
 #define MAIN_H
 #include <stdarg.h>
@@ -22,7 +23,11 @@
  * struct fmt - Struct op
  *
  * @fmt: The format.
- * @fn: The function assoc fmt;
+ * @fn: The function associated.
+ */
+struct fmt
+{
+	char fmt;
 	int (*fn)(va_list, char[], int, int, int, int);
 };
 
