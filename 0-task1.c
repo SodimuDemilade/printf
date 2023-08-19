@@ -47,13 +47,8 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == '%')
 			{
-				a = va_arg(arg, char *);
-				while (*a != '\0')
-				{
-					putchar(*a);
-					count++;
-					a++;;
-				}
+				putchar('%');
+				count++;
 			}
 			i++;
 		}
