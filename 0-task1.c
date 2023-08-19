@@ -3,22 +3,21 @@
 #include "main.h"
 
 /**
- * _printf - function to print output.
+ * print_format - format
  *
- * @format: input.
+ * @format: input
  *
- * Return: character length.
+ * @arg: check
+ *
+ * Return: return count.
  *
  */
 
-int _printf(const char *format, ...)
+int print_format(const char *format, va_list arg)
 {
-	va_list arg;
 	char *s;
-	int i = 0;
-	int count = 0;
+	int i = 0, count = 0;
 
-	va_start(arg, format);
 	while (format[i] != '\0')
 	{
 		if (format[i] != '%')
@@ -53,6 +52,25 @@ int _printf(const char *format, ...)
 			i++;
 		}
 	}
-	va_end(arg);
 	return (count);
+}
+
+/**
+ * _printf - function to print output.
+ *
+ * @format: input.
+ *
+ * Return: character length.
+ *
+ */
+
+int _printf(const char *format, ...)
+{
+	va_list arg;
+	int len;
+
+	va_start(arg, format);
+	len = print_format(format, arg);
+	va_end(arg);
+	return (len);
 }
