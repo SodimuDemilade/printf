@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 			else if (format[i] == 's')
 			{
 				s = va_arg(arg, char *);
-				while (*s != '\0') 
+				while (*s != '\0')
 				{
 					putchar(*s);
 					s++;
