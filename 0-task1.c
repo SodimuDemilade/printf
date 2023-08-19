@@ -14,7 +14,7 @@
 int _printf(const char *format, ...)
 {
 	va_list arg;
-	char *s;
+	char *s, *a;
 	int i = 0;
 	int count = 0;
 
@@ -47,8 +47,13 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == '%')
 			{
-				putchar('%');
-				count++;
+				a = va_arg(arg, char *);
+				while (*a != '\0')
+				{
+					putchar(*a);
+					count++;
+					a++;;
+				}
 			}
 			i++;
 		}
