@@ -37,6 +37,8 @@ int print_format(const char *format, va_list arg)
 			else if (format[i] == 's')
 			{
 				s = va_arg(arg, char *);
+				if (s == NULL)
+					return (-1);
 				while (*s != '\0')
 				{
 					putchar(*s);
