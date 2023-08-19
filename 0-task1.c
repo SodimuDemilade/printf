@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	va_list arg;
 	char *s;
 	int i = 0;
-	int count;
+	int count = 0;
 
 	va_start(arg, format);
 	while (format[i] != '\0')
@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 				while (*s != '\0')
 				{
 					putchar(*s);
-					count++
+					count++;
 					s++;
 				}
 			}
