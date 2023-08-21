@@ -10,4 +10,8 @@ int percent_handle(va_list arg);
 int d_handle(va_list arg);
 int b_handle(va_list arg);
 void print_binary(unsigned int b);
+int u_handle(va_list arg);
+int o_handle(va_list arg);
+int x_handle(va_list arg);
+int X_handle(va_list arg);
 #endif

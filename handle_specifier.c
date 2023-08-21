@@ -102,3 +102,55 @@ int b_handle(va_list arg)
 	}
 	return (count);
 }
+
+/**
+ * u_handle - main
+ * @arg: input
+ * Return: count
+ */
+int u_handle(va_list arg)
+{
+	unsigned int num = va_arg(arg, unsigned int);
+	int digits[32], num_digits = 0, count = 0, i;
+
+	do {
+		digits[num_digits] = num % 10;	
+		num_digits++;
+		num /= 10;
+	} while (num > 0);
+	for (i = num_digits - 1; i >= 0; i--)
+	{
+		putchar('0' + digits[i]);
+		count++;
+	}
+	return (count);
+}
+
+/**
+ * u_handle - main
+ * @arg: input
+ * Return: count
+ */
+int o_handle(va_list arg)
+{
+	int digits[32], num_digits = 0, count = 0, i;
+	unsigned int num = va_arg(arg, unsigned int);
+
+	if (num == 0)
+	{
+		putchar('0');
+		return (1);
+	}
+	while(num > 0 )
+	{
+		digits[num_digits] = num % 8;
+		num_digits++;
+		num /= 8;
+	}
+	for (i = num_digits - 1; i >= 0; i--)
+	{
+		putchar('0' + digits[i]);
+		count++;
+	}
+	return (count);
+}

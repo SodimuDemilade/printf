@@ -50,6 +50,26 @@ int print_format(const char *format, va_list arg)
 						len += b_handle(arg);
 						break;
 					}
+				case 'u':
+					{
+						len += u_handle(arg);
+						break;
+					}
+				case 'o':
+					{
+						len += o_handle(arg);
+						break;
+					}
+				case 'x':
+					{
+						len += x_handle(arg);
+						break;
+					}
+				case 'X':
+					{
+						len += X_handle(arg);
+						break;
+					}
 				default:
 					{
 						putchar('%');
