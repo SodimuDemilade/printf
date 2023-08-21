@@ -91,13 +91,13 @@ int b_handle(va_list arg)
 	}
 	while (num > 0) 
 	{
-		binary_digits[num_digits] = num % 2;
+		bin_dig[num_digits] = num % 2;
 		num_digits++;
 		num /= 2;
 	}	
 	for (i = num_digits - 1; i >= 0; i--) 
 	{
-		putchar('0' + binary_digits[i]);
+		putchar('0' + bin_dig[i]);
 		count++;
 	}
 	return (count);

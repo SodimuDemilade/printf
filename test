@@ -1,85 +1,33 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "main.h"
-
 /**
- * print_format - format
- *
- * @format: input
- *
- * @arg: check
- *
- * Return: return count.
- *
+ * _printf- prints conversion specifier.
+ * @format: string format.
+ * @...:unknown arguments.
+ * Return: Always 0
  */
-
-int print_format2(const char *format, va_list arg)
+int _printf(const char *format, ...)
 {
-	char *s;
-	int i = 0, count = 0;
+	unsigned int num;
+	va_list args;
 
-	while (format[i] != '\0')
+	va_start(args, format);
+
+	while (*format)
 	{
-		if (format[i] != '%')
+		if (*format == '%' && *(format + 1) == 'b')
 		{
-			putchar(format[i]);
-			count++;
-			i++;
+		num = va_arg(args, unsigned int);
+		print_binary(num);
+			format += 2;
 		}
 		else
 		{
-			i++;
-			if (format[i] == 'c')
-			{
-				putchar(va_arg(arg, int));
-				count++;
-			}
-			else if (format[i] == 's')
-			{
-				s = va_arg(arg, char *);
-				if (s == NULL)
-					return (-1);
-				while (*s != '\0')
-				{
-					putchar(*s);
-					count++;
-					s++;
-				}
-			}
-			else if (format[i] == '%')
-			{
-				putchar('%');
-				count++;
-			}
-			else if (format[i] == 'i')
-			{
-				putchar(va_arg(arg, int));
-				count++;
-			}
-			i++;
+			putchar(*format);
+			format++;
 		}
 	}
-	return (count);
-}
-
-/**
- * _printf - function to print output.
- *
- * @format: input.
- *
- * Return: character length.
- *
- */
-
-int _printf2(const char *format, ...)
-{
-	va_list arg;
-	int len;
-
-	if (format == NULL)
-		return (-1);
-	va_start(arg, format);
-	len = print_format(format, arg);
-	va_end(arg);
-	return (len);
+	va_end(args);
+	return (0);
 }
