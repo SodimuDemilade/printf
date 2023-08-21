@@ -73,3 +73,32 @@ int d_handle(va_list arg)
 	}
 	return (count);
 }
+
+/**
+ * b_handle - main
+ * @arg: input
+ * Return: count
+ */
+int b_handle(va_list arg)
+{
+	unsigned int num = va_arg(arg, unsigned int);
+	int bin_dig[32], num_digits = 0, count = 0, i;
+
+	if (num == 0) 
+	{
+		putchar('0');
+		return (1);
+	}
+	while (num > 0) 
+	{
+		binary_digits[num_digits] = num % 2;
+		num_digits++;
+		num /= 2;
+	}	
+	for (i = num_digits - 1; i >= 0; i--) 
+	{
+		putchar('0' + binary_digits[i]);
+		count++;
+	}
+	return (count);
+}

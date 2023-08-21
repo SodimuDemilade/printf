@@ -7,4 +7,5 @@ int c_handle(va_list arg);
 int s_handle(va_list arg);
 int percent_handle(va_list arg);
 int d_handle(va_list arg);
+int b_handle(va_list arg);
 #endif

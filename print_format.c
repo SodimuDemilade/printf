@@ -45,6 +45,11 @@ int print_format(const char *format, va_list arg)
 						len += d_handle(arg);
 						break;
 					}
+				case 'b':
+					{
+						len += b_handle(arg);
+						break;
+					}
 				default:
 					{
 						putchar('%');
