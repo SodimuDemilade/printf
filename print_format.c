@@ -31,8 +31,8 @@ int print_format(const char *format, va_list arg)
 					}
 				case 's':
 					{
-						len += s_handle(arg);
-						break;
+					len += s_handle(arg);
+					break;
 					}
 				case '%':
 					{
