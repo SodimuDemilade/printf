@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "main.h"
+#include <string.h>
 
 /**
  * reverse_string - function that reverse string
@@ -23,8 +24,8 @@ char *reverse_string(char *s)
 		if (reverse == NULL)
 			return (NULL);
 	}
-	_mempcy(reverse, s, len);
-	for (head = o; head < len; head++; len--)
+	memcpy(reverse, s, len);
+	for (head = 0; head < len; head++, len--)
 	{
 		tmp = reverse[len - 1];
 		reverse[len - 1] = reverse[head];
