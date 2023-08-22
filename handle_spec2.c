@@ -122,7 +122,10 @@ int S_handle(va_list arg, char *buffer, int *buff_ind)
 		}
 		else
 		{
-			sprintf(temp_buffer, "\\x%02X", (unsigned char)*str);
+			temp_buffer[0] = '\\';
+			temp_buffer[1] = 'x';
+			temp_buffer[2] = "0123456789ABCDEF"[(*str >> 4) & 0x0F];
+			temp_buffer[3] = "0123456789ABCDEF"[*str & 0x0F];
 			for (i = 0; i < 4; i++)
 			{
 				buffer[(*buff_ind)++] = temp_buffer[i];
