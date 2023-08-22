@@ -139,7 +139,7 @@ int p_handle(va_list arg, char *buffer, int *count)
 {
 	void *ptr = va_arg(arg, void *);
 	unsigned long int num = (unsigned long int)ptr;
-	char temp_buffer[32];
+	char temp_buffer[64];
 	int temp_index = 0, counter = 0, i, digit;
 
 	buffer[(*count)++] = '0';
