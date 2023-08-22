@@ -18,7 +18,7 @@ int o_handle(va_list arg);
 int x_handle(va_list arg);
 int X_handle(va_list arg);
 int print_reversed(va_list arg);
-char *rev_string(char *str);
+char *reverse_string(char *str);
 =======
 int u_handle(va_list arg, char *buffer, int *buff_ind);
 int o_handle(va_list arg, char *buffer, int *buff_ind);
