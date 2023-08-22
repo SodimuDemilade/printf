@@ -11,6 +11,18 @@ int s_handle(va_list arg, char *buffer, int *buff_ind);
 int percent_handle(char *buffer, int *buff_ind);
 int d_handle(va_list arg, char *buffer, int *buff_ind, int flags);
 int b_handle(va_list arg, char *buffer, int *buff_ind);
+<<<<<<< HEAD
+void print_binary(unsigned int b);
+<<<<<<< HEAD
+int u_handle(va_list arg);
+int o_handle(va_list arg);
+int x_handle(va_list arg);
+int X_handle(va_list arg);
+int print_reversed(va_list arg);
+char *reverse_string(char *str);
+=======
+=======
+>>>>>>> 06cc49c9dde45996a6b4373caa04eefa4338df46
 int u_handle(va_list arg, char *buffer, int *buff_ind);
 int o_handle(va_list arg, char *buffer, int *buff_ind, int flags);
 int x_handle(va_list arg, char *buffer, int *buff_ind, int flags);
