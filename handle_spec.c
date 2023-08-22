@@ -61,7 +61,7 @@ int percent_handle(char *buffer, int *buff_ind)
  * @buff_ind: input
  * Return: count
  */
-int d_handle(va_list arg, char *buffer, int *buff_ind)
+int d_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 {
 	int num = va_arg(arg, int);
 	int count = 0, num_digits = 0, digits[10], i;
@@ -71,6 +71,14 @@ int d_handle(va_list arg, char *buffer, int *buff_ind)
 		buffer[(*buff_ind)++] = '-';
 		count++;
 		num = -num;
+	}
+	else if (flags & 0x01)
+	{
+		buffer[(*buff_ind)++] = '+';
+	}
+	else if (flags & 0x02)
+	{
+		buffer[(*buff_ind)++] = ' ';
 	}
 	do {
 		digits[num_digits] = num % 10;
@@ -148,7 +156,7 @@ int u_handle(va_list arg, char *buffer, int *buff_ind)
  * @buff_ind: input
  * Return: count
  */
-int o_handle(va_list arg, char *buffer, int *buff_ind)
+int o_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 {
 	int digits[32], num_digits = 0, count = 0, i;
 	unsigned int num = va_arg(arg, unsigned int);
@@ -157,6 +165,10 @@ int o_handle(va_list arg, char *buffer, int *buff_ind)
 	{
 		buffer[(*buff_ind)++] = '0';
 		return (count);
+	}
+	if (flags == 0x04)
+	{
+		buffer[(*buff_ind)++] = 'O';
 	}
 	while(num > 0 )
 	{

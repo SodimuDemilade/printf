@@ -11,7 +11,7 @@
  */
 int print_format(const char *format, va_list arg)
 {
-	int i = 0, len = 0, buff_ind = 0;
+	int i = 0, len = 0, buff_ind = 0, flags;
 	char buffer[BUFFER_SIZE];
 
 	while (format[i] != '\0')
@@ -25,6 +25,11 @@ int print_format(const char *format, va_list arg)
 		else
 		{
 			i++;
+			while (format[i] == '+' || format[i] == ' ' || format[i] == '#')
+			{
+				flags = handle_flags(format, &i);
+				i++;
+			}
 			switch (format[i])
 			{
 				case 'c':
@@ -45,7 +50,7 @@ int print_format(const char *format, va_list arg)
 				case 'd':
 				case 'i':
 					{
-					len += d_handle(arg, buffer, &buff_ind);
+					len += d_handle(arg, buffer, &buff_ind, flags);
 					break;
 					}
 				case 'b':
@@ -60,17 +65,17 @@ int print_format(const char *format, va_list arg)
 					}
 				case 'o':
 					{
-					len += o_handle(arg, buffer, &buff_ind);
+					len += o_handle(arg, buffer, &buff_ind, flags);
 					break;
 					}
 				case 'x':
 					{
-					len += x_handle(arg, buffer, &buff_ind);
+					len += x_handle(arg, buffer, &buff_ind, flags);
 					break;
 					}
 				case 'X':
 					{
-					len += X_handle(arg, buffer, &buff_ind);
+					len += X_handle(arg, buffer, &buff_ind, flags);
 					break;
 					}
 				case 'S':
