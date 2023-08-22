@@ -17,6 +17,7 @@ int c_handle(va_list arg, char *buffer, int *buff_ind)
 
 	buffer[(*buff_ind)++] = c;
 	i++;
+	buffer[*buff_ind] = '\0';
 	return (i);
 }
 
@@ -39,6 +40,7 @@ int s_handle(va_list arg, char *buffer, int *buff_ind)
 		i++;
 		s++;
 	}
+	buffer[*buff_ind] = '\0';
 	return (i);
 }
 
@@ -51,6 +53,7 @@ int s_handle(va_list arg, char *buffer, int *buff_ind)
 int percent_handle(char *buffer, int *buff_ind)
 {
 	buffer[(*buff_ind)++] = '%';
+	buffer[*buff_ind] = '\0';
 	return (1);
 }
 
@@ -72,7 +75,7 @@ int d_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		count++;
 		num = -num;
 	}
-	else if (flags & 0x01)
+	if (flags & 0x01)
 	{
 		buffer[(*buff_ind)++] = '+';
 	}
@@ -90,6 +93,7 @@ int d_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		buffer[(*buff_ind)++] = ('0' + digits[i]);
 		count++;
 	}
+	buffer[*buff_ind] = '\0';
 	return (count);
 }
 
@@ -121,6 +125,7 @@ int b_handle(va_list arg, char *buffer, int *buff_ind)
 		buffer[(*buff_ind)++] = ('0' + bin_dig[i]);
 		count++;
 	}
+	buffer[*buff_ind] = '\0';
 	return (count);
 }
 
@@ -146,6 +151,7 @@ int u_handle(va_list arg, char *buffer, int *buff_ind)
 		buffer[(*buff_ind)++] = ('0' + digits[i]);
 		count++;
 	}
+	buffer[*buff_ind] = '\0';
 	return (count);
 }
 
@@ -166,7 +172,7 @@ int o_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		buffer[(*buff_ind)++] = '0';
 		return (count);
 	}
-	if (flags == 0x04)
+	if (flags & 0x04)
 	{
 		buffer[(*buff_ind)++] = 'O';
 	}
@@ -181,5 +187,6 @@ int o_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		buffer[(*buff_ind)++] = ('0' + digits[i]);
 		count++;
 	}
+	buffer[*buff_ind] = '\0';
 	return (count);
 }

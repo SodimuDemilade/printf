@@ -22,7 +22,7 @@ int x_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		buffer[(*buff_ind)++] = '0';
 		return (1);
 	}
-	if (flags == 0x04)
+	if (flags & 0x04)
 	{
 		buffer[(*buff_ind)++] = 'O';
 		buffer[(*buff_ind)++] = 'x';
@@ -47,6 +47,7 @@ int x_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		buffer[(*buff_ind)++] = digits[i];
 		count++;
 	}
+	buffer[*buff_ind] = '\0';
 	return (count);
 }
 
@@ -69,7 +70,7 @@ int X_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		buffer[(*buff_ind)++] = '0';
 		return (1);
 	}
-	if (flags == 0x04)
+	if (flags & 0x04)
 	{
 		buffer[(*buff_ind)++] = 'O';
 		buffer[(*buff_ind)++] = 'x';
@@ -94,6 +95,7 @@ int X_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		buffer[(*buff_ind)++] = digits[i];
 		count++;
 	}
+	buffer[*buff_ind] = '\0';
 	return (count);
 }
 
