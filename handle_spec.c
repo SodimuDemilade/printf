@@ -72,7 +72,7 @@ int d_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		count++;
 		num = -num;
 	}
-	else if (flags & 0x01)
+	if (flags & 0x01)
 	{
 		buffer[(*buff_ind)++] = '+';
 	}
@@ -166,7 +166,7 @@ int o_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		buffer[(*buff_ind)++] = '0';
 		return (count);
 	}
-	if (flags == 0x04)
+	if (flags & 0x04)
 	{
 		buffer[(*buff_ind)++] = 'O';
 	}

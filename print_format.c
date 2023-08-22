@@ -11,7 +11,7 @@
  */
 int print_format(const char *format, va_list arg)
 {
-	int i = 0, len = 0, buff_ind = 0, flags;
+	int i = 0, len = 0, buff_ind = 0, flags = 0;
 	char buffer[BUFFER_SIZE];
 
 	while (format[i] != '\0')
@@ -102,7 +102,7 @@ int print_format(const char *format, va_list arg)
 		if (buff_ind >= BUFFER_SIZE)
 		{
 			write(1, buffer, buff_ind);
-			buff_ind = 0;	
+			buff_ind = 0;
 		}
 	}
 	if (buff_ind > 0)
