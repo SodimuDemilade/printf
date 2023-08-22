@@ -15,4 +15,6 @@ int u_handle(va_list arg, char *buffer, int *buff_ind);
 int o_handle(va_list arg, char *buffer, int *buff_ind);
 int x_handle(va_list arg, char *buffer, int *buff_ind);
 int X_handle(va_list arg, char *buffer, int *buff_ind);
+int S_handle(va_list arg, char *buffer, int *buff_ind);
+int p_handle(va_list arg, char *buffer, int *count);
 #endif
