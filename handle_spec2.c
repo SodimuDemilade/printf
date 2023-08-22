@@ -47,6 +47,7 @@ int x_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		buffer[(*buff_ind)++] = digits[i];
 		count++;
 	}
+	buffer[*buff_ind] = '\0';
 	return (count);
 }
 
@@ -94,6 +95,7 @@ int X_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 		buffer[(*buff_ind)++] = digits[i];
 		count++;
 	}
+	buffer[*buff_ind] = '\0';
 	return (count);
 }
 
