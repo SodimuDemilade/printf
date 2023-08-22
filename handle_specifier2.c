@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include <stdlib.h>
 
 /**
  * x_handle - main
@@ -79,4 +80,29 @@ int X_handle(va_list arg)
 		count++;
 	}
 	return (count);
+}
+/**
+ * r_handle - main
+ * @arg: input
+ * Return: count
+ */
+
+char *rev_string(char *str);
+int r_handle(va_list arg)
+{
+	int len;
+	char *str;
+	char *ptr;
+
+	str = va_arg(arg, char *);
+	if (str == NULL)
+		return (-1);
+	ptr = rev_string(str);
+	if (ptr == NULL)
+		return (-1);
+
+	for (len = 0; ptr[len] != '\0'; len++)
+		putchar(ptr[len]);
+	free(ptr);
+	return (len);
 }

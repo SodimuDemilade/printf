@@ -2,6 +2,7 @@
 #define PRINTF_H
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 int _printf(const char *format, ...);
 int print_format(const char *format, va_list arg);
 int c_handle(va_list arg);
@@ -14,4 +15,6 @@ int u_handle(va_list arg);
 int o_handle(va_list arg);
 int x_handle(va_list arg);
 int X_handle(va_list arg);
+int print_reversed(va_list arg);
+char *rev_string(char *str);
 #endif
