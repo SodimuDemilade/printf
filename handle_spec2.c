@@ -11,7 +11,7 @@
  * Return: count
  */
 
-int x_handle(va_list arg, char *buffer, int *buff_ind)
+int x_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 {
 	unsigned int num = va_arg(arg, unsigned int);
 	int rem, num_digits = 0, count = 0, i;
@@ -21,6 +21,11 @@ int x_handle(va_list arg, char *buffer, int *buff_ind)
 	{
 		buffer[(*buff_ind)++] = '0';
 		return (1);
+	}
+	if (flags == 0x04)
+	{
+		buffer[(*buff_ind)++] = 'O';
+		buffer[(*buff_ind)++] = 'x';
 	}
 	while (num > 0)
 	{
@@ -53,7 +58,7 @@ int x_handle(va_list arg, char *buffer, int *buff_ind)
  * Return: count
  */
 
-int X_handle(va_list arg, char *buffer, int *buff_ind)
+int X_handle(va_list arg, char *buffer, int *buff_ind, int flags)
 {
 	unsigned int num = va_arg(arg, unsigned int);
 	int rem, num_digits = 0, count = 0, i;
@@ -63,6 +68,11 @@ int X_handle(va_list arg, char *buffer, int *buff_ind)
 	{
 		buffer[(*buff_ind)++] = '0';
 		return (1);
+	}
+	if (flags == 0x04)
+	{
+		buffer[(*buff_ind)++] = 'O';
+		buffer[(*buff_ind)++] = 'x';
 	}
 	while (num > 0)
 	{
@@ -139,7 +149,7 @@ int p_handle(va_list arg, char *buffer, int *count)
 {
 	void *ptr = va_arg(arg, void *);
 	unsigned long int num = (unsigned long int)ptr;
-	char temp_buffer[64];
+	char temp_buffer[32];
 	int temp_index = 0, counter = 0, i, digit;
 
 	buffer[(*count)++] = '0';
