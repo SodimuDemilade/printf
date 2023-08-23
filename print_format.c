@@ -25,6 +25,14 @@ int print_format(const char *format, va_list arg)
 		else
 		{
 			i++;
+			if (format[i] == '\0')
+			{
+				buffer[buff_ind] = '%';
+				len++;
+				buff_ind++;
+			}
+			else
+			{
 			while (format[i] == '+' || format[i] == ' ' || format[i] == '#')
 			{
 				flags = handle_flags(format, &i);
@@ -106,6 +114,7 @@ int print_format(const char *format, va_list arg)
 						buff_ind++;
 						len += 2;
 					}
+			}
 			}
 		}
 		i++;

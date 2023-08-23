@@ -8,6 +8,7 @@
  * @arg: input
  * @buffer: input
  * @buff_ind: input
+ * @flags: input
  * @mod: input
  * Return: count
  */
@@ -17,7 +18,7 @@ int x_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 	int rem, num_digits = 0, count = 0, i;
 	char digits[32];
 	unsigned long num = 0;
-	
+
 	if (mod == 'O')
 		num = va_arg(arg, unsigned int);
 	else if (mod == 'l')
@@ -38,15 +39,9 @@ int x_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 	{
 		rem = num % 16;
 		if (rem < 10)
-		{
-			digits[num_digits] = '0' + rem;
-			num_digits++;
-		}
+			digits[num_digits++] = '0' + rem;
 		else
-		{
-			digits[num_digits] = 'a' + rem - 10;
-			num_digits++;
-		}
+			digits[num_digits++] = 'a' + rem - 10;
 		num /= 16;
 	}
 	for (i = num_digits - 1; i >= 0 ; i--)
@@ -63,6 +58,7 @@ int x_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
  * @arg: input
  * @buffer: input
  * @buff_ind: input
+ * @flags: input
  * @mod: input
  * Return: count
  */
@@ -93,15 +89,9 @@ int X_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 	{
 		rem = num % 16;
 		if (rem < 10)
-		{
-			digits[num_digits] = '0' + rem;
-			num_digits++;
-		}
+			digits[num_digits++] = '0' + rem;
 		else
-		{
-			digits[num_digits] = 'A' + rem - 10;
-			num_digits++;
-		}
+			digits[num_digits++] = 'A' + rem - 10;
 		num /= 16;
 	}
 	for (i = num_digits - 1; i >= 0 ; i--)
@@ -160,7 +150,7 @@ int S_handle(va_list arg, char *buffer, int *buff_ind)
  * p_handle - main
  * @arg: input
  * @buffer: innput
- * @buff_ind: input
+ * @count: input
  * Return: check
  */
 
@@ -175,7 +165,7 @@ int p_handle(va_list arg, char *buffer, int *count)
 		return (0);
 	buffer[(*count)++] = '0';
 	buffer[(*count)++] = 'x';
-    	if (num == 0)
+	if (num == 0)
 	{
 		buffer[(*count)++] = '0';
 		counter++;
@@ -188,13 +178,14 @@ int p_handle(va_list arg, char *buffer, int *count)
 		{
 			temp_buffer[temp_index++] = '0' + digit;
 		}
-		else 
+		else
 		{
 			temp_buffer[temp_index++] = 'a' + digit - 10;
 		}
 		num /= 16;
 	}
-	for (i = temp_index - 1; i >= 0; i--) {
+	for (i = temp_index - 1; i >= 0; i--)
+	{
 		buffer[(*count)++] = temp_buffer[i];
 		counter++;
 	}

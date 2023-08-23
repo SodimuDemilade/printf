@@ -41,7 +41,7 @@ int main(void)
     _printf("%ld\n", 567890);
     _printf("%hd\n", 3409);
     _printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
-
+_printf("%");
 
     return (0);
 }
