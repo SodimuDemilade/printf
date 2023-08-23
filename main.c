@@ -40,5 +40,8 @@ int main(void)
     _printf("%+d\n", 45);
     _printf("%ld\n", 567890);
     _printf("%hd\n", 3409);
+    _printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+
+
     return (0);
 }
