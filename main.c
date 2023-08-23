@@ -9,7 +9,7 @@
  */
 int main(void)
 {
-    int len, len2;
+    int len, len2, len3, len4;
     unsigned int ui;
     void *addr;
 
@@ -41,7 +41,11 @@ int main(void)
     _printf("%ld\n", 567890);
     _printf("%hd\n", 3409);
     _printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
-_printf("%");
+_printf("%o\n", 0);
+len3 = _printf("%+d\n", 1024);
+len4 = printf("%+d\n", 1024);
+printf("%d\n", len3);
+printf("%d\n", len4);
 
     return (0);
 }

@@ -33,7 +33,9 @@ int x_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 	if (flags & 0x04)
 	{
 		buffer[(*buff_ind)++] = 'O';
+		count++;
 		buffer[(*buff_ind)++] = 'x';
+		count++;
 	}
 	while (num > 0)
 	{
@@ -83,7 +85,9 @@ int X_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 	if (flags & 0x04)
 	{
 		buffer[(*buff_ind)++] = 'O';
+		count++;
 		buffer[(*buff_ind)++] = 'x';
+		count++;
 	}
 	while (num > 0)
 	{
@@ -164,7 +168,9 @@ int p_handle(va_list arg, char *buffer, int *count)
 	if (ptr == NULL)
 		return (0);
 	buffer[(*count)++] = '0';
+	counter++;
 	buffer[(*count)++] = 'x';
+	counter++;
 	if (num == 0)
 	{
 		buffer[(*count)++] = '0';

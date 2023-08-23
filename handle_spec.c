@@ -57,10 +57,12 @@ int d_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 	if (flags & 0x01)
 	{
 		buffer[(*buff_ind)++] = '+';
+		count++;
 	}
 	else if (flags & 0x02)
 	{
 		buffer[(*buff_ind)++] = ' ';
+		count++;
 	}
 	do {
 		digits[num_digits] = num % 10;
@@ -169,6 +171,7 @@ int o_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 	if (flags & 0x04)
 	{
 		buffer[(*buff_ind)++] = 'O';
+		count++;
 	}
 	while (num > 0)
 	{
