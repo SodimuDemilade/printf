@@ -37,5 +37,8 @@ int main(void)
      _printf("Address:[%p]\n", addr);
     printf("Address:[%p]\n", addr);
     _printf("Reverse:[%r]\n", "string");
+    _printf("%+d\n", 45);
+    _printf("%ld\n", 567890);
+    _printf("%hd\n", 3409);
     return (0);
 }

@@ -61,13 +61,20 @@ int percent_handle(char *buffer, int *buff_ind)
  * @arg: input
  * @buffer: input
  * @buff_ind: input
+ * @mod: input
  * Return: count
  */
-int d_handle(va_list arg, char *buffer, int *buff_ind, int flags)
+int d_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 {
-	int num = va_arg(arg, int);
 	int count = 0, num_digits = 0, digits[10], i;
+	long num = 0;
 
+	if (mod == 'O')
+		num = va_arg(arg, int);
+	else if (mod == 'l')
+		num = va_arg(arg, long);
+	else if (mod == 'h')
+		num = (short)va_arg(arg, int);
 	if (num < 0)
 	{
 		buffer[(*buff_ind)++] = '-';
@@ -133,13 +140,20 @@ int b_handle(va_list arg, char *buffer, int *buff_ind)
  * @arg: input
  * @buffer: input
  * @buff_ind: input
+ * @mod: input
  * Return: count
  */
-int u_handle(va_list arg, char *buffer, int *buff_ind)
+int u_handle(va_list arg, char *buffer, int *buff_ind, char mod)
 {
-	unsigned int num = va_arg(arg, unsigned int);
 	int digits[32], num_digits = 0, count = 0, i;
+	unsigned long num = 0;
 
+	if (mod == 'O')
+		num = va_arg(arg, unsigned int);
+	else if (mod == 'l')
+		num = va_arg(arg, unsigned long);
+	else if (mod == 'h')
+		num = (short)va_arg(arg, unsigned int);
 	do {
 		digits[num_digits] = num % 10;	
 		num_digits++;
@@ -159,13 +173,20 @@ int u_handle(va_list arg, char *buffer, int *buff_ind)
  * @arg: input
  * @buffer: input
  * @buff_ind: input
+ * @mod: input
  * Return: count
  */
-int o_handle(va_list arg, char *buffer, int *buff_ind, int flags)
+int o_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 {
 	int digits[32], num_digits = 0, count = 0, i;
-	unsigned int num = va_arg(arg, unsigned int);
+	unsigned long num = 0;
 
+	if (mod == 'O')
+		num = va_arg(arg, unsigned int);
+	else if (mod == 'l')
+		num = va_arg(arg, unsigned long);
+	else if (mod == 'h')
+		num = (short)va_arg(arg, unsigned int);
 	if (num == 0)
 	{
 		buffer[(*buff_ind)++] = '0';

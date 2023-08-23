@@ -8,15 +8,22 @@
  * @arg: input
  * @buffer: input
  * @buff_ind: input
+ * @mod: input
  * Return: count
  */
 
-int x_handle(va_list arg, char *buffer, int *buff_ind, int flags)
+int x_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 {
-	unsigned int num = va_arg(arg, unsigned int);
 	int rem, num_digits = 0, count = 0, i;
 	char digits[32];
-
+	unsigned long num = 0;
+	
+	if (mod == 'O')
+		num = va_arg(arg, unsigned int);
+	else if (mod == 'l')
+		num = va_arg(arg, unsigned long);
+	else if (mod == 'h')
+		num = (short)va_arg(arg, unsigned int);
 	if (num == 0)
 	{
 		buffer[(*buff_ind)++] = '0';
@@ -56,15 +63,22 @@ int x_handle(va_list arg, char *buffer, int *buff_ind, int flags)
  * @arg: input
  * @buffer: input
  * @buff_ind: input
+ * @mod: input
  * Return: count
  */
 
-int X_handle(va_list arg, char *buffer, int *buff_ind, int flags)
+int X_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 {
-	unsigned int num = va_arg(arg, unsigned int);
 	int rem, num_digits = 0, count = 0, i;
 	char digits[32];
+	unsigned long num = 0;
 
+	if (mod == 'O')
+		num = va_arg(arg, unsigned int);
+	else if (mod == 'l')
+		num = va_arg(arg, unsigned long);
+	else if (mod == 'h')
+		num = (short)va_arg(arg, unsigned int);
 	if (num == 0)
 	{
 		buffer[(*buff_ind)++] = '0';
