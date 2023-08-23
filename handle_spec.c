@@ -54,7 +54,7 @@ int d_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 		count++;
 		num = -num;
 	}
-	if (flags & 0x01)
+	else if (flags & 0x01)
 	{
 		buffer[(*buff_ind)++] = '+';
 		count++;
@@ -65,8 +65,7 @@ int d_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 		count++;
 	}
 	do {
-		digits[num_digits] = num % 10;
-		num_digits++;
+		digits[num_digits++] = num % 10;
 		num /= 10;
 	} while (num > 0);
 	for (i = num_digits - 1; i >= 0; i--)
