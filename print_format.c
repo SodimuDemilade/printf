@@ -88,6 +88,11 @@ int print_format(const char *format, va_list arg)
 					len += p_handle(arg, buffer, &buff_ind);
 					break;
 					}
+				case 'r':
+					{
+					len += r_handle(arg, buffer, &buff_ind);
+					break;
+					}
 				default:
 					{
 						buffer[buff_ind] = '%';

@@ -13,6 +13,7 @@ int d_handle(va_list arg, char *buffer, int *buff_ind, int flags);
 int b_handle(va_list arg, char *buffer, int *buff_ind);
 int print_reversed(va_list arg);
 char *reverse_string(char *str);
+int r_handle(va_list arg, char *buffer, int *buff_ind);
 int u_handle(va_list arg, char *buffer, int *buff_ind);
 int o_handle(va_list arg, char *buffer, int *buff_ind, int flags);
 int x_handle(va_list arg, char *buffer, int *buff_ind, int flags);

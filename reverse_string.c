@@ -18,17 +18,15 @@ char *reverse_string(char *s)
 	char tmp;
 	char *reverse;
 
-	for (len = 0; s[len] != '\0'; len++)
+	len = strlen(s);
+	reverse = malloc(sizeof(char) * (len + 1));
+	if (reverse == NULL)
+		return (NULL);
+	memcpy(reverse, s, len + 1);
+	for (head = 0; head < len / 2; head++)
 	{
-		reverse = malloc(sizeof(char) * len + 1);
-		if (reverse == NULL)
-			return (NULL);
-	}
-	memcpy(reverse, s, len);
-	for (head = 0; head < len; head++, len--)
-	{
-		tmp = reverse[len - 1];
-		reverse[len - 1] = reverse[head];
+		tmp = reverse[len - head - 1];
+		reverse[len - head - 1] = reverse[head];
 		reverse[head] = tmp;
 	}
 	return (reverse);
@@ -40,7 +38,7 @@ char *reverse_string(char *s)
  * Return: count
  */
 
-int r_handle(va_list arg)
+int r_handle(va_list arg, char *buffer, int *buff_ind)
 {
 	int len;
 	char *str;
@@ -48,13 +46,13 @@ int r_handle(va_list arg)
 
 	str = va_arg(arg, char *);
 	if (str == NULL)
-		return (-1);
+		return (0);
 	ptr = reverse_string(str);
 	if (ptr == NULL)
-		return (-1);
+		return (0);
 
 	for (len = 0; ptr[len] != '\0'; len++)
-		putchar(ptr[len]);
+		buffer[(*buff_ind)++] = ptr[len];
 	free(ptr);
 	return (len);
 }

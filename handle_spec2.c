@@ -157,6 +157,8 @@ int p_handle(va_list arg, char *buffer, int *count)
 	char temp_buffer[32];
 	int temp_index = 0, counter = 0, i, digit;
 
+	if (ptr == NULL)
+		return (0);
 	buffer[(*count)++] = '0';
 	buffer[(*count)++] = 'x';
     	if (num == 0)

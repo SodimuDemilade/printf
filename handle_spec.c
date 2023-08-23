@@ -33,7 +33,6 @@ int s_handle(va_list arg, char *buffer, int *buff_ind)
 	int i = 0;
 	char *s = va_arg(arg, char *);
 
-
 	while (*s != '\0')
 	{
 		buffer[(*buff_ind)++] = *s;
