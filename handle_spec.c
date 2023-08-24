@@ -165,17 +165,16 @@ int o_handle(va_list arg, char *buffer, int *buff_ind, int flags, char mod)
 	if (num == 0)
 	{
 		buffer[(*buff_ind)++] = '0';
-		return (count);
+		return (1);
 	}
 	if (flags & 0x04)
 	{
-		buffer[(*buff_ind)++] = 'O';
+		buffer[(*buff_ind)++] = '0';
 		count++;
 	}
 	while (num > 0)
 	{
-		digits[num_digits] = num % 8;
-		num_digits++;
+		digits[num_digits++] = num % 8;
 		num /= 8;
 	}
 	for (i = num_digits - 1; i >= 0; i--)
